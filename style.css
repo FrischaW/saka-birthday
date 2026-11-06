@@ -1,0 +1,152 @@
+:root {
+    --bg-color: #d1e2e5;
+    --card-bg: #eaf3f3;
+    --text-color: #586e75;
+    --accent-blue: #7ba4b5;
+    --grid-bg: #e1ebec;
+    --letter-bg: #d7e4e6;
+}
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+body {
+    margin: 0;
+    padding: 20px 10px;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.word-game-container {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Badge Counter Atas */
+.counter-badge {
+    background: #c5d9dd;
+    padding: 8px 22px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #486167;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Kartu Surat */
+.message-card {
+    background: var(--card-bg);
+    border: 2px dashed #b5cbd0;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.letter-text {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin: 0 0 15px 0;
+    color: #52686e;
+}
+
+/* Kata Tebal Target */
+.target-word {
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #3b4e53;
+    padding: 1px 4px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Status Kata yang Sudah Ditemukan di Surat */
+.target-word.found {
+    background-color: var(--accent-blue);
+    color: #ffffff;
+}
+
+.hint-text {
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent-blue);
+    margin: 0;
+}
+
+/* Grid 10x10 Word Search */
+.word-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+    background: var(--grid-bg);
+    padding: 12px;
+    border-radius: 20px;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    touch-action: none; /* Mencegah layar ter-scroll saat di-swipe */
+}
+
+/* Kotak Huruf */
+.letter-box {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--letter-bg);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #40565c;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.letter-box.selected {
+    background: var(--accent-blue);
+    color: #ffffff;
+}
+
+.letter-box.found {
+    background: var(--accent-blue) !important;
+    color: #ffffff !important;
+}
+
+/* Pop-Up Modal */
+.modal {
+    display: none; /* Default tersembunyi */
+    position: fixed;
+    inset: 0;
+    background: rgba(45, 62, 68, 0.45);
+    backdrop-filter: blur(4px);
+    z-index: 9999; /* Pastikan angkanya tinggi supaya menutupi segalanya */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.modal.active {
+    display: flex !important; /* Memaksa tampil menjadi flex saat class active ditambahkan */
+}
+
+.btn {
+    background: var(--accent-blue);
+    color: #ffffff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
